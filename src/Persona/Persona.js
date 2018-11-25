@@ -18,9 +18,11 @@ de las etiquetas del componente.
 */
 import React from 'react';
 
+import './Persona.css'; //Importa el archivo CSS
+
 const persona = (prop) => {
   return (
-    <div>
+    <div className="Persona">
       <p onClick={prop.click}>Soy {prop.nombre} y tengo {prop.edad} años de edad</p>
       <p>{prop.children}</p>
       <input type="text" onChange={prop.cambiado} value={prop.nombre}/>
