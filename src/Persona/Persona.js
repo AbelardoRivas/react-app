@@ -21,8 +21,9 @@ import React from 'react';
 const persona = (prop) => {
   return (
     <div>
-      <p>Soy {prop.nombre} y tengo {prop.edad} años de edad</p>
+      <p onClick={prop.click}>Soy {prop.nombre} y tengo {prop.edad} años de edad</p>
       <p>{prop.children}</p>
+      <input type="text" onChange={prop.cambiado} value={prop.nombre}/>
     </div>
     //return <p>Soy una persona y tengo {Math.floor(Math.random() * 30)} años de edad</p>
   )

@@ -17,7 +17,11 @@ NOTA: state solo funciona con componente que extienden otras
 propiedades
 
 NOTA: es recomendable usar componente con funciones ya que state
-hace la aplicación más impredecible*/
+hace la aplicación más impredecible
+
+.bind enlaza un argumento a un método
+
+target y value son palabras reservadas para acceder a las propiedades de React*/
 import Persona from './Persona/Persona';
 
 class App extends Component {
@@ -29,16 +33,26 @@ class App extends Component {
     ]
   }
 
-  cambiarNombre = () =>{ //Método
+  cambiarNombre = (nuevoNombre) =>{ //Método
       //console.log('¡Hizo click!');
       //NO HACER ESTO: this.state.personas[0].nombre = 'Andrés';
       this.setState({
           personas:[
-          {nombre: 'Andrés', edad: 28},
-          {nombre: 'Pedro', edad: 30},
+          {nombre: 'José', edad: 28},
+          {nombre: nuevoNombre, edad: 30},
           {nombre: 'Maria', edad: 26}
         ]
       })
+  }
+
+  eventoCambiarNombre = (event) =>{
+    this.setState({
+        personas:[
+        {nombre: 'José', edad: 28},
+        {nombre: event.target.value, edad: 30},
+        {nombre: 'Maria', edad: 26}
+      ]
+    })
   }
 
   render() {
@@ -46,10 +60,18 @@ class App extends Component {
       <div className="App">
         <h1>Hola, soy una aplicación de React</h1>
         <p>¡Esto está funcionando!</p>
-        <button onClick={this.cambiarNombre}>Cambiar Nombre</button>
-        <Persona nombre={this.state.personas[0].nombre} edad={this.state.personas[0].edad}>Mi hobby: Programar</Persona>
-        <Persona nombre={this.state.personas[1].nombre} edad={this.state.personas[1].edad}/>
-        <Persona nombre={this.state.personas[2].nombre} edad={this.state.personas[2].edad}/>
+        <button onClick={this.cambiarNombre.bind(this, 'Andrés')}>Cambiar Nombre</button>
+        <Persona
+          nombre={this.state.personas[0].nombre}
+          edad={this.state.personas[0].edad}>Mi hobby: Programar</Persona>
+        <Persona
+          nombre={this.state.personas[1].nombre}
+          edad={this.state.personas[1].edad}
+          click={this.cambiarNombre.bind(this, '¡Andrés!')}
+          cambiado={this.eventoCambiarNombre}/>
+        <Persona
+          nombre={this.state.personas[2].nombre}
+          edad={this.state.personas[2].edad}/>
       </div>
       /*<Persona nombre="Abelardo" edad="21">Mi hobby: Programar</Persona>
       <Persona nombre="Manuel" edad="22"/>
