@@ -58,7 +58,7 @@ class App extends Component {
 
   activarNombrePersona = () => {
     const siMuestra = this.state.mostrarPersonas;
-    this.setState({mostrarPersonas : !siMuestra})
+    this.setState({mostrarPersonas : !siMuestra}) //Dos puntos significa igual a
   }
 
   render() {
@@ -70,6 +70,26 @@ class App extends Component {
       cursor: 'pointer'
     }
 
+    let personas = null;
+
+    if (this.state.mostrarPersonas) {
+      personas = (
+        <div>
+          <Persona
+            nombre={this.state.personas[0].nombre}
+            edad={this.state.personas[0].edad}>Mi hobby: Programar</Persona>
+          <Persona
+            nombre={this.state.personas[1].nombre}
+            edad={this.state.personas[1].edad}
+            click={this.cambiarNombre.bind(this, '¡Andrés!')}
+            cambiado={this.eventoCambiarNombre}/>
+          <Persona
+            nombre={this.state.personas[2].nombre}
+            edad={this.state.personas[2].edad}/>
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <h1>Hola, soy una aplicación de React</h1>
@@ -77,22 +97,7 @@ class App extends Component {
         <button
           style = {estilo}
           onClick={this.activarNombrePersona}>Cambiar Personas</button>
-          {
-            this.state.mostrarPersonas === true ? //condicional
-              <div>
-                <Persona
-                  nombre={this.state.personas[0].nombre}
-                  edad={this.state.personas[0].edad}>Mi hobby: Programar</Persona>
-                <Persona
-                  nombre={this.state.personas[1].nombre}
-                  edad={this.state.personas[1].edad}
-                  click={this.cambiarNombre.bind(this, '¡Andrés!')}
-                  cambiado={this.eventoCambiarNombre}/>
-                <Persona
-                  nombre={this.state.personas[2].nombre}
-                  edad={this.state.personas[2].edad}/>
-              </div> : null //: representa el else
-          }
+          {personas}
       </div>
       /*<Persona nombre="Abelardo" edad="21">Mi hobby: Programar</Persona>
       <Persona nombre="Manuel" edad="22"/>
