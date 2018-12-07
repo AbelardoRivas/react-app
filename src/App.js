@@ -26,31 +26,41 @@ target y value son palabras reservadas para acceder a las propiedades de React
 map lee un array en Javascript y devuelve un array nuevo en JSX
 
 splice agrega o elimina elemetos de un array
+
+slice copia el array y lo devueelve uno nuevo que se puede guardar en una
+variable
 */
 import Persona from './Persona/Persona';
 
 class App extends Component {
   state = {
     personas: [
-      {nombre: 'José', edad: 28},
-      {nombre: 'Pedro', edad: 30},
-      {nombre: 'Maria', edad: 24}
+      {id: 'a', nombre: 'José', edad: 28},
+      {id: 'b', nombre: 'Pedro', edad: 30},
+      {id: 'c', nombre: 'Maria', edad: 24}
     ],
     mostrarPersonas: false
   }
 
-  eventoCambiarNombre = (event) =>{
-    this.setState({
-        personas:[
-        {nombre: 'José', edad: 28},
-        {nombre: event.target.value, edad: 30},
-        {nombre: 'Maria', edad: 26}
-      ]
-    })
+  eventoCambiarNombre = (event , id) =>{
+    const personaIndex = this.state.personas.findIndex(p => {
+      return p.id === id;
+    });
+
+    const persona = {
+      ...this.state.personas[personaIndex]
+    };
+
+    persona.nombre = event.target.value;
+
+    const personas = [...this.state.personas];
+    personas[personaIndex] = persona;
+
+    this.setState({ personas: personas })
   }
 
   eliminarPersona = (personaIndex) =>{
-    const personas = this.state.personas;
+    const personas = [...this.state.personas];
     personas.splice(personaIndex, 1);
     this.setState({personas : personas});
   }
@@ -78,7 +88,9 @@ class App extends Component {
             return <Persona
             click={() => this.eliminarPersona (index)}
             nombre={persona.nombre}
-            edad={persona.edad}/>
+            edad={persona.edad}
+            key={persona.id}
+            cambiado={(event) => this.eventoCambiarNombre (event, persona.id)} />
           })}
         </div>
       );
