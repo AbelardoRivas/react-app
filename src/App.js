@@ -37,18 +37,6 @@ class App extends Component {
     mostrarPersonas: false
   }
 
-  cambiarNombre = (nuevoNombre) =>{ //Método
-      //console.log('¡Hizo click!');
-      //NO HACER ESTO: this.state.personas[0].nombre = 'Andrés';
-      this.setState({
-          personas:[
-          {nombre: 'José', edad: 28},
-          {nombre: nuevoNombre, edad: 30},
-          {nombre: 'Maria', edad: 26}
-        ]
-      })
-  }
-
   eventoCambiarNombre = (event) =>{
     this.setState({
         personas:[
@@ -57,6 +45,12 @@ class App extends Component {
         {nombre: 'Maria', edad: 26}
       ]
     })
+  }
+
+  eliminarPersona = (personaIndex) =>{
+    const personas = this.state.personas;
+    personas.splice(personaIndex, 1);
+    this.setState({personas : personas});
   }
 
   activarNombrePersona = () => {
@@ -78,8 +72,9 @@ class App extends Component {
     if (this.state.mostrarPersonas) {
       personas = (
         <div>
-          {this.state.personas.map(persona => {
+          {this.state.personas.map((persona, index) => {
             return <Persona
+            click={() => this.eliminarPersona (index)}
             nombre={persona.nombre}
             edad={persona.edad}/>
           })}
