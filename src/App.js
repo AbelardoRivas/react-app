@@ -21,7 +21,10 @@ hace la aplicación más impredecible
 
 .bind enlaza un argumento a un método
 
-target y value son palabras reservadas para acceder a las propiedades de React*/
+target y value son palabras reservadas para acceder a las propiedades de React
+
+map lee un array en Javascript y devuelve un array nuevo en JSX
+*/
 import Persona from './Persona/Persona';
 
 class App extends Component {
@@ -75,17 +78,11 @@ class App extends Component {
     if (this.state.mostrarPersonas) {
       personas = (
         <div>
-          <Persona
-            nombre={this.state.personas[0].nombre}
-            edad={this.state.personas[0].edad}>Mi hobby: Programar</Persona>
-          <Persona
-            nombre={this.state.personas[1].nombre}
-            edad={this.state.personas[1].edad}
-            click={this.cambiarNombre.bind(this, '¡Andrés!')}
-            cambiado={this.eventoCambiarNombre}/>
-          <Persona
-            nombre={this.state.personas[2].nombre}
-            edad={this.state.personas[2].edad}/>
+          {this.state.personas.map(persona => {
+            return <Persona
+            nombre={persona.nombre}
+            edad={persona.edad}/>
+          })}
         </div>
       );
     }
