@@ -31,7 +31,6 @@ slice copia el array y lo devueelve uno nuevo que se puede guardar en una
 variable
 */
 import Persona from './Persona/Persona';
-import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
   state = {
@@ -78,11 +77,7 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
+      cursor: 'pointer'
     }
 
     let personas = null;
@@ -101,10 +96,6 @@ class App extends Component {
         </div>
       );
       estilo.backgroundColor = 'red';
-      estilo[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
     }
 
     const clases = [];
@@ -116,7 +107,6 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
         <div className="App">
           <h1>Hola, soy una aplicación de React</h1>
           <p className={clases.join(' ')}>¡Esto está funcionando!</p>
@@ -125,7 +115,6 @@ class App extends Component {
             onClick={this.activarNombrePersona}>Cambiar Personas</button>
             {personas}
         </div>
-      </StyleRoot>
       /*<Persona nombre="Abelardo" edad="21">Mi hobby: Programar</Persona>
       <Persona nombre="Manuel" edad="22"/>
       <Persona nombre="Vicdalis" edad="21"/>*/
@@ -133,4 +122,4 @@ class App extends Component {
   }
 }
 
-export default Radium(App);
+export default App;

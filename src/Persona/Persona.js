@@ -17,17 +17,11 @@ es decir, las "propiedades" que se le agregan.
 de las etiquetas del componente.
 */
 import React from 'react';
-import Radium from 'radium';
 import './Persona.css'; //Importa el archivo CSS
 
 const persona = (prop) => {
-  const estiloPersona = {
-    '@media (min-width: 500px)' : {
-      width: '450px'
-    }
-  };
   return (
-    <div className="Persona" style={estiloPersona}>
+    <div className="Persona">
       <p onClick={prop.click}>Soy {prop.nombre} y tengo {prop.edad} años de edad</p>
       <p>{prop.children}</p>
       <input type="text" onChange={prop.cambiado} value={prop.nombre}/>
@@ -36,4 +30,4 @@ const persona = (prop) => {
   )
 };
 
-export default Radium(persona);
+export default persona;
