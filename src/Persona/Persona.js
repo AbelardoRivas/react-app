@@ -17,7 +17,7 @@ es decir, las "propiedades" que se le agregan.
 de las etiquetas del componente.
 */
 import React from 'react';
-
+import Radium from 'radium';
 import './Persona.css'; //Importa el archivo CSS
 
 const persona = (prop) => {
@@ -31,4 +31,4 @@ const persona = (prop) => {
   )
 };
 
-export default persona;
+export default Radium(persona);
