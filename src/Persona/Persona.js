@@ -17,11 +17,11 @@ es decir, las "propiedades" que se le agregan.
 de las etiquetas del componente.
 */
 import React from 'react';
-import './Persona.css'; //Importa el archivo CSS
+import clasesCSS from './Persona.css'; //Importa el archivo CSS
 
 const persona = (prop) => {
   return (
-    <div className="Persona">
+    <div className={clasesCSS.Persona}>
       <p onClick={prop.click}>Soy {prop.nombre} y tengo {prop.edad} años de edad</p>
       <p>{prop.children}</p>
       <input type="text" onChange={prop.cambiado} value={prop.nombre}/>

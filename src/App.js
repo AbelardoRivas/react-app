@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import clasesCSS from './App.css';
 /*import nombre_opcional importa el componente creado.
 state es una propiedad que permite manejar los atributos
 desde el interior del componente
@@ -100,14 +100,14 @@ class App extends Component {
 
     const clases = [];
     if (this.state.personas.length <= 2) {
-      clases.push('red');
+      clases.push(clasesCSS.red);
     }
     if (this.state.personas.length <= 1) {
-      clases.push('bold');
+      clases.push(clasesCSS.bold);
     }
 
     return (
-        <div className="App">
+        <div className={clasesCSS.App}>
           <h1>Hola, soy una aplicación de React</h1>
           <p className={clases.join(' ')}>¡Esto está funcionando!</p>
           <button
