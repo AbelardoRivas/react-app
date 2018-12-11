@@ -77,11 +77,7 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-<<<<<<< HEAD
       cursor: 'pointer'
-=======
-      cursor: 'pointer',
->>>>>>> 72f5601117247c5599b8ab0b49a04640cf413407
     }
 
     let personas = null;
@@ -100,10 +96,6 @@ class App extends Component {
         </div>
       );
       estilo.backgroundColor = 'red';
-<<<<<<< HEAD
-=======
-      }
->>>>>>> 72f5601117247c5599b8ab0b49a04640cf413407
     }
 
     const clases = [];
