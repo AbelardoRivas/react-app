@@ -31,7 +31,7 @@ slice copia el array y lo devueelve uno nuevo que se puede guardar en una
 variable
 */
 import Persona from './Persona/Persona';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
   state = {
@@ -116,14 +116,16 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <h1>Hola, soy una aplicación de React</h1>
-        <p className={clases.join(' ')}>¡Esto está funcionando!</p>
-        <button
-          style = {estilo}
-          onClick={this.activarNombrePersona}>Cambiar Personas</button>
-          {personas}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hola, soy una aplicación de React</h1>
+          <p className={clases.join(' ')}>¡Esto está funcionando!</p>
+          <button
+            style = {estilo}
+            onClick={this.activarNombrePersona}>Cambiar Personas</button>
+            {personas}
+        </div>
+      </StyleRoot>
       /*<Persona nombre="Abelardo" edad="21">Mi hobby: Programar</Persona>
       <Persona nombre="Manuel" edad="22"/>
       <Persona nombre="Vicdalis" edad="21"/>*/
