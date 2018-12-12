@@ -71,16 +71,9 @@ class App extends Component {
   }
 
   render() {
-    const estilo ={
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    }
 
     let personas = null;
+    let claseBoton = '';
 
     if (this.state.mostrarPersonas) {
       personas = (
@@ -95,7 +88,8 @@ class App extends Component {
           })}
         </div>
       );
-      estilo.backgroundColor = 'red';
+
+      claseBoton = clasesCSS.Red;
     }
 
     const clases = [];
@@ -107,14 +101,14 @@ class App extends Component {
     }
 
     return (
-        <div className={clasesCSS.App}>
-          <h1>Hola, soy una aplicación de React</h1>
-          <p className={clases.join(' ')}>¡Esto está funcionando!</p>
-          <button
-            style = {estilo}
-            onClick={this.activarNombrePersona}>Cambiar Personas</button>
-            {personas}
-        </div>
+      <div className={clasesCSS.App}>
+        <h1>Hola, soy una aplicación de React</h1>
+        <p className={clases.join(' ')}>¡Esto está funcionando!</p>
+        <button
+          className={claseBoton}
+          onClick={this.activarNombrePersona}>Cambiar Personas</button>
+          {personas}
+      </div>
       /*<Persona nombre="Abelardo" edad="21">Mi hobby: Programar</Persona>
       <Persona nombre="Manuel" edad="22"/>
       <Persona nombre="Vicdalis" edad="21"/>*/
