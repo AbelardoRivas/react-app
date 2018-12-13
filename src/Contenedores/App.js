@@ -30,7 +30,7 @@ splice agrega o elimina elemetos de un array
 slice copia el array y lo devueelve uno nuevo que se puede guardar en una
 variable
 */
-import Persona from './Persona/Persona';
+import Persona from '../Componentes/Personas/Persona/Persona';
 
 class App extends Component {
   state = {
