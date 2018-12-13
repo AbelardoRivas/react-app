@@ -30,7 +30,8 @@ splice agrega o elimina elemetos de un array
 slice copia el array y lo devueelve uno nuevo que se puede guardar en una
 variable
 */
-import Persona from '../Componentes/Personas/Persona/Persona';
+import Personas from '../Componentes/Personas/Personas';
+import Cockpit from '../Componentes/Cockpit/Cockpit';
 
 class App extends Component {
   state = {
@@ -73,41 +74,21 @@ class App extends Component {
   render() {
 
     let personas = null;
-    let claseBoton = '';
 
     if (this.state.mostrarPersonas) {
-      personas = (
-        <div>
-          {this.state.personas.map((persona, index) => {
-            return <Persona
-            click={() => this.eliminarPersona (index)}
-            nombre={persona.nombre}
-            edad={persona.edad}
-            key={persona.id}
-            cambiado={(event) => this.eventoCambiarNombre (event, persona.id)} />
-          })}
-        </div>
-      );
-
-      claseBoton = clasesCSS.Red;
-    }
-
-    const clases = [];
-    if (this.state.personas.length <= 2) {
-      clases.push(clasesCSS.red);
-    }
-    if (this.state.personas.length <= 1) {
-      clases.push(clasesCSS.bold);
+      personas = <Personas
+            personas={this.state.personas}
+            clicked={this.eliminarPersona}
+            cambiado={this.eventoCambiarNombre}/>;
     }
 
     return (
       <div className={clasesCSS.App}>
-        <h1>Hola, soy una aplicación de React</h1>
-        <p className={clases.join(' ')}>¡Esto está funcionando!</p>
-        <button
-          className={claseBoton}
-          onClick={this.activarNombrePersona}>Cambiar Personas</button>
-          {personas}
+        <Cockpit
+        mostrarPersonas={this.state.mostrarPersonas}
+        personas={this.state.personas}
+        clicked={this.activarNombrePersona}/>
+        {personas}
       </div>
       /*<Persona nombre="Abelardo" edad="21">Mi hobby: Programar</Persona>
       <Persona nombre="Manuel" edad="22"/>
