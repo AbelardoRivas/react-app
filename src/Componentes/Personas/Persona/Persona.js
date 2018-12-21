@@ -19,6 +19,7 @@ de las etiquetas del componente.
 import React, { Component } from 'react';
 import clasesCSS from './Persona.css'; //Importa el archivo CSS
 import ConClase from '../../../hoc/ConClase';
+import PropTypes from 'prop-types';
 
 class Persona  extends Component {
   render () {
@@ -32,5 +33,12 @@ class Persona  extends Component {
     )
   }
 }
+
+Persona.propTypes = {
+  click: PropTypes.func,
+  nombre: PropTypes.string,
+  edad: PropTypes.number,
+  cambiado: PropTypes.func
+};
 
 export default Persona;
