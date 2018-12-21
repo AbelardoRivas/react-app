@@ -32,6 +32,7 @@ variable
 */
 import Personas from '../Componentes/Personas/Personas';
 import Cockpit from '../Componentes/Cockpit/Cockpit';
+import ConClase from '../hoc/ConClase';
 
 class App extends PureComponent {
   state = {
@@ -83,13 +84,13 @@ class App extends PureComponent {
     }
 
     return (
-      <div className={clasesCSS.App}>
+      <ConClase clasesCSS={clasesCSS.App}>
         <Cockpit
         mostrarPersonas={this.state.mostrarPersonas}
         personas={this.state.personas}
         clicked={this.activarNombrePersona}/>
         {personas}
-      </div>
+      </ConClase>
       /*<Persona nombre="Abelardo" edad="21">Mi hobby: Programar</Persona>
       <Persona nombre="Manuel" edad="22"/>
       <Persona nombre="Vicdalis" edad="21"/>*/

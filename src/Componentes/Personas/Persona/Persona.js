@@ -18,15 +18,16 @@ de las etiquetas del componente.
 */
 import React, { Component } from 'react';
 import clasesCSS from './Persona.css'; //Importa el archivo CSS
+import ConClase from '../../../hoc/ConClase';
 
 class Persona  extends Component {
   render () {
     return (
-      <div className={clasesCSS.Persona}>
+      <ConClase clasesCSS={clasesCSS.Persona}>
         <p onClick={this.props.click}>Soy {this.props.nombre} y tengo {this.props.edad} años de edad</p>
         <p>{this.props.children}</p>
         <input type="text" onChange={this.props.cambiado} value={this.props.nombre}/>
-      </div>
+      </ConClase>
       //return <p>Soy una persona y tengo {Math.floor(Math.random() * 30)} años de edad</p>
     )
   }

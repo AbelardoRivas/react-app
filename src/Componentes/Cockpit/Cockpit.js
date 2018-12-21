@@ -4,10 +4,10 @@ import clasesCSS from './Cockpit.css';
 const cockpit = (prop) => {
 
   const clases = [];
-  let claseBoton = '';
+  let claseBoton = clasesCSS.Button;
 
   if (prop.mostrarPersonas) {
-    claseBoton = clasesCSS.Red;
+    claseBoton = [clasesCSS.Button, clasesCSS.Red].join(' ');
   }
 
   if (prop.personas.length <= 2) {
@@ -18,13 +18,13 @@ const cockpit = (prop) => {
   }
 
   return (
-    <div className={clasesCSS.Cockpit}>
+    <>
       <h1>Hola, soy una aplicación de React</h1>
       <p className={clases.join(' ')}>¡Esto está funcionando!</p>
       <button
         className={claseBoton}
         onClick={prop.clicked}>Cambiar Personas</button>
-    </div>
+    </>
   );
 };
 
