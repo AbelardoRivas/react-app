@@ -41,7 +41,8 @@ class App extends PureComponent {
       {id: 'b', nombre: 'Pedro', edad: 30},
       {id: 'c', nombre: 'Maria', edad: 24}
     ],
-    mostrarPersonas: false
+    mostrarPersonas: false,
+    activarClicked: 0
   }
 
   eventoCambiarNombre = (event , id) =>{
@@ -69,7 +70,12 @@ class App extends PureComponent {
 
   activarNombrePersona = () => {
     const siMuestra = this.state.mostrarPersonas;
-    this.setState({mostrarPersonas : !siMuestra}) //Dos puntos significa igual a
+    this.setState( (prevState, props) => {
+      return {
+        mostrarPersonas : !siMuestra,
+        activarClicked: prevState.activarClicked + 1
+      }
+    }); //Dos puntos significa igual a
   }
 
   render() {
