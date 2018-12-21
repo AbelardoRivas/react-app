@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import clasesCSS from './App.css';
 /*import nombre_opcional importa el componente creado.
 state es una propiedad que permite manejar los atributos
@@ -33,7 +33,7 @@ variable
 import Personas from '../Componentes/Personas/Personas';
 import Cockpit from '../Componentes/Cockpit/Cockpit';
 
-class App extends Component {
+class App extends PureComponent {
   state = {
     personas: [
       {id: 'a', nombre: 'José', edad: 28},

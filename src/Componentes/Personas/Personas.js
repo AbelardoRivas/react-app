@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Persona from './Persona/Persona';
 
-class Personas extends Component {
+class Personas extends PureComponent {
   render () {
     return this.props.personas.map(( persona, index ) => {
         return <Persona
