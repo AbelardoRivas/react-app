@@ -7,7 +7,7 @@
   text-align: center;
 }
 
-@@media (min-width: 500px) {
+@media (min-width: 500px) {
   .Persona {
     width: 450px;
   }
